@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { getHeroes } from "../api/heroesApi";
 import Fist from "./Fist";
 import "../styles/table.css";
-import HeroLogo from "./HeroLogo";
 
 function HeroesTable() {
   const [heroes, setHeroes] = useState([]);
@@ -18,7 +17,11 @@ function HeroesTable() {
     setShowImage(!showImage);
   }
 
-  return heroes && heroes.length ? (
+  if (!(heroes && heroes.length)) {
+    return null;
+  }
+
+  return (
     <table className="table">
       <thead>
         <tr>
@@ -43,7 +46,9 @@ function HeroesTable() {
           return (
             <tr key={hero.id}>
               <td>
-                <HeroLogo hero={hero} showImage={showImage} />
+                {showImage && (
+                  <img className="image" src={hero.logoUrl} alt={hero.name} />
+                )}
               </td>
               <td>{hero.name}</td>
               <td>{hero.team}</td>
@@ -57,8 +62,6 @@ function HeroesTable() {
         })}
       </tbody>
     </table>
-  ) : (
-    <></>
   );
 }
 export default HeroesTable;
