@@ -7,7 +7,7 @@ const heroes = [
     salary: 0.99,
     description: "Man with iron suit",
     strength: 4.2,
-    logoUrl: "logos/iron-man.png",
+    logoUrl: "/logos/iron-man.png",
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ const heroes = [
     salary: 10.99,
     description: "Norse god of thunder",
     strength: 4.5,
-    logoUrl: "logos/thor.png",
+    logoUrl: "/logos/thor.png",
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ const heroes = [
     salary: 3500,
     description: "Man of steel",
     strength: 5.0,
-    logoUrl: "logos/superman.png",
+    logoUrl: "/logos/superman.png",
   },
   {
     id: 4,
@@ -37,7 +37,7 @@ const heroes = [
     salary: 15000,
     description: "Fun to hang out with ... in short doses",
     strength: 3.2,
-    logoUrl: "logos/deadpool.png",
+    logoUrl: "/logos/deadpool.png",
   },
   {
     id: 5,
@@ -47,7 +47,7 @@ const heroes = [
     salary: 10000,
     description: "Amazon warrior",
     strength: 4.4,
-    logoUrl: "logos/wonder-woman.png",
+    logoUrl: "/logos/wonder-woman.png",
   },
 ];
 
@@ -60,7 +60,7 @@ const sidekicks = [
     salary: 1520.2,
     description: "Man with iron suit",
     strength: 4,
-    logoUrl: "logos/war-machine.png",
+    logoUrl: "/logos/war-machine.png",
   },
   {
     id: 2,
@@ -70,7 +70,7 @@ const sidekicks = [
     salary: 10.99,
     description: "The protector of Bludhaven",
     strength: 3.5,
-    logoUrl: "logos/nightwing.png",
+    logoUrl: "/logos/nightwing.png",
   },
   {
     id: 3,
@@ -80,7 +80,7 @@ const sidekicks = [
     salary: 2499.99,
     description: "Fastest man alive",
     strength: 5.0,
-    logoUrl: "logos/kid-flash.png",
+    logoUrl: "/logos/kid-flash.png",
   },
   {
     id: 4,
@@ -90,7 +90,7 @@ const sidekicks = [
     salary: 1000,
     description: "Armoured with wings",
     strength: 3.4,
-    logoUrl: "logos/falcon.png",
+    logoUrl: "/logos/falcon.png",
   },
 ];
 
