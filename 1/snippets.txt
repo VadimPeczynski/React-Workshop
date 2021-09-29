@@ -1,0 +1,124 @@
+1. Create react app
+
+npx create-react-app heroes-academy
+
+2. Instalowanie Bootstrap
+
+npm install bootstrap@5.1.0
+
+3. Instalowanie ikon
+
+npm install @fortawesome/fontawesome-free@5.15.4
+
+4. Importowanie css
+
+import "bootstrap/dist/css/bootstrap.min.css";
+import "@fortawesome/fontawesome-free/css/fontawesome.min.css";
+import "@fortawesome/fontawesome-free/css/solid.min.css";
+
+5. Budowanie komponentu - class
+
+class App extends React.Component {
+    render() {
+	<div>
+   	    <h1>Witajcie w Heroes Academy!</h1>
+	</div>
+    }
+}
+
+6. Bootstrapping
+
+import React from "react";
+import { render } from "react-dom";
+import App from "./components/App";
+
+render(<App />, document.getElementById("root"));
+
+7. Budowanie komponentu - function
+
+function HeroesList() {
+  return (
+    <div className="card">
+      <h5 className="card-header">Lista Herosów</h5>
+      <div className="card-body"></div>
+    </div>
+  );
+}
+
+8. Budowanie komponentu - arrow function
+
+const HeroesTable = () => {
+  return (
+    <div className="table-responsive">
+      <table className="table">
+        <thead>
+          <tr>
+	    <th></th>
+            <th>Nazwa</th>
+            <th>Team</th>
+            <th>Tożsamość</th>
+            <th>Wynagrodzenie</th>
+            <th>Siła</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  );
+};
+
+9. Row
+
+<tr>
+  <td>
+    <img className="image" src={hero.logoUrl} alt={hero.name} />
+  </td>
+  <td>{hero.name}</td>
+  <td>{hero.team}</td>
+  <td>{hero.secretIdentity}</td>
+  <td>{hero.salary} PLN</td>
+  <td>{hero.strength}</td>
+</tr>
+
+10. useState
+
+const [heroes, setHeroes] = useState([]);
+
+11. useEffect
+
+useEffect(() => {
+    getHeroes().then((_heroes) => {
+      setHeroes(_heroes);
+    });
+  }, []);
+
+12. Pokaż logo
+
+const [showImage, setShowImage] = useState(false);
+
+function onLogoButtonClick() {
+    setShowImage(!showImage);
+  }
+
+<button
+    className={showImage ? "btn btn-danger" : "btn btn-success"}
+    type="button"
+    onClick={onLogoButtonClick}
+>
+    {showImage ? "Ukryj" : "Pokaż"} logo
+</button>
+
+13. Props - Fist
+
+import React from "react";
+import "../styles/fist.css";
+
+<div className="crop" style={{ width: props.strength?(60 / 5) * props.strength:0 }} title={props.strength}>
+      <div className="fists">
+        <span className="fas fa-fist-raised"></span>
+        <span className="fas fa-fist-raised"></span>
+        <span className="fas fa-fist-raised"></span>
+        <span className="fas fa-fist-raised"></span>
+        <span className="fas fa-fist-raised"></span>
+      </div>
+    </div>
