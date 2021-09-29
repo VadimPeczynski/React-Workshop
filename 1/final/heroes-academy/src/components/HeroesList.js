@@ -7,7 +7,6 @@ class HeroesList extends React.Component {
       <div className="card">
         <h5 className="card-header">Lista Herosów</h5>
         <div className="card-body">
-          <div className="table-responsive"></div>
           <HeroesTable />
         </div>
       </div>
