@@ -20,9 +20,9 @@ import "@fortawesome/fontawesome-free/css/solid.min.css";
 
 class App extends React.Component {
     render() {
-	<div>
+	 return (<div>
    	    <h1>Witajcie w Heroes Academy!</h1>
-	</div>
+	</div>);
     }
 }
 
