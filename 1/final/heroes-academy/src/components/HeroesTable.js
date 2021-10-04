@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { getHeroes } from "../api/heroesApi";
-import Fist from "./Fist";
 import "../styles/table.css";
 
 function HeroesTable() {
@@ -55,9 +54,7 @@ function HeroesTable() {
                 <td>{hero.team}</td>
                 <td>{hero.secretIdentity}</td>
                 <td>{hero.salary} PLN</td>
-                <td>
-                  <Fist strength={hero.strength} />
-                </td>
+                <td>{hero.strength}</td>
               </tr>
             );
           })}
