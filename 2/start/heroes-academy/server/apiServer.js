@@ -35,21 +35,11 @@ server.use(function (req, res, next) {
 
 // Declaring custom routes below. Add custom routes before JSON Server router
 
-// Add createdAt to all POSTS
-server.use((req, res, next) => {
-  if (req.method === "POST") {
-    req.body.createdAt = Date.now();
-  }
-  // Continue to JSON Server router
-  next();
-});
-
 server.post("/heroes/", function (req, res, next) {
   const error = validateHero(req.body);
   if (error) {
     res.status(400).send(error);
   } else {
-    req.body.slug = createSlug(req.body.name); // Generate a slug for new courses.
     next();
   }
 });
@@ -59,7 +49,6 @@ server.post("/sidekicks/", function (req, res, next) {
   if (error) {
     res.status(400).send(error);
   } else {
-    req.body.slug = createSlug(req.body.name); // Generate a slug for new courses.
     next();
   }
 });
@@ -72,16 +61,6 @@ const port = 3001;
 server.listen(port, () => {
   console.log(`JSON Server is running on port ${port}`);
 });
-
-// Centralized logic
-
-// Returns a URL friendly slug
-function createSlug(value) {
-  return value
-    .replace(/[^a-z0-9_]+/gi, "-")
-    .replace(/^-|-$/g, "")
-    .toLowerCase();
-}
 
 function validateHero(hero) {
   if (!hero.name) return "Name is required.";
