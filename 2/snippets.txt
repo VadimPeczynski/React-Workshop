@@ -1,0 +1,182 @@
+1. Props - Fist
+
+import React from "react";
+import "../styles/fist.css";
+
+<div className="crop" style={{ width: props.strength?(60 / 5) * props.strength:0 }} title={props.strength}>
+      <div className="fists">
+        <span className="fas fa-fist-raised"></span>
+        <span className="fas fa-fist-raised"></span>
+        <span className="fas fa-fist-raised"></span>
+        <span className="fas fa-fist-raised"></span>
+        <span className="fas fa-fist-raised"></span>
+      </div>
+    </div>
+
+2. Event handler
+
+Parent:
+
+onClick={(strength) => handleFistClick(strength)}
+
+function handleFistClick(strength) {
+    console.log(`Kliknięto ${strength}`);
+  }
+
+Child: 
+
+onClick={() => props.onClick(props.strength)}
+
+3. Instalowanie React-Router
+
+npm install react-router-dom@5.2.0
+
+4. Inicjalizacja Routera
+
+import { BrowserRouter as Router } from "react-router-dom";
+
+<Router>
+  <App />
+</Router>
+
+5. Routes
+
+import { Route } from "react-router-dom";
+
+<Route path="/" component={Welcome}></Route>
+<Route path="/heroes" component={HeroesList}></Route>
+
+6. NavLinks
+
+import { NavLink } from "react-router-dom";
+
+<NavLink className="nav-link" exact to="/" activeClassName="active">
+     Witaj
+</NavLink>
+
+7. PageNotFound
+
+import React from "react";
+import { Link } from "react-router-dom";
+
+<div className="card">
+      <h5 className="card-header">Nie znaleziono strony</h5>
+      <div className="card-body">
+      </div>
+    </div>
+
+8. Link
+
+<Link to="/" className="btn btn-outline-secondary">
+          Powrót
+        </Link>
+
+9. Switch
+
+import { Route, Switch } from "react-router-dom";
+
+<Switch>
+        <Route path="/" exact component={Welcome}></Route>
+        <Route path="/heroes" component={HeroesList}></Route>
+        <Route component={PageNotFound} />
+      </Switch>
+
+10. Hero details
+
+import React from "react";
+import { Link } from "react-router-dom";
+
+<div className="card">
+      <h5 className="card-header">Informacje o herosie</h5>
+      <div className="card-body">
+        <p>Nazwa herosa: {hero.name}</p>
+      </div>
+      <div className="card-footer">
+        <Link type="button" className="btn btn-outline-secondary" to="/heroes">
+          <i className="fa fa-chevron-left"></i> Powrót
+        </Link>
+      </div>
+    </div>
+
+11. Routing z parametrem
+
+<Route path="/hero-details/:id" component={HeroDetails}></Route>
+
+import { Link } from "react-router-dom";
+
+<Link to={"/hero-details/" + hero.id}>{hero.name}</Link>
+
+12. Url z parametrami
+
+const id = props.match.params.id;
+
+13. Pobieranie danych po id
+
+const [hero, setHero] = useState({});
+
+  useEffect(() => {
+    getHeroById(id).then((_hero) => {
+      setHero(_hero);
+    });
+  }, [id]);
+
+14. Usuwanie bohatera
+
+<span
+  className="fas fa-times"
+  onClick={() => deleteHeroById(hero.id)}
+></span>
+
+function deleteHeroById(id) {
+    deleteHero(id).then(() => {
+      getHeroesList();
+    });
+  }
+
+function getHeroesList() {
+    getHeroes().then((_heroes) => {
+      setHeroes(_heroes);
+    });
+  }
+
+14. Homework
+
+<div className="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-3 text-left">Nazwa:</div>
+              <div class="col-md-6 text-left"></div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 text-left">Team:</div>
+              <div class="col-md-6 text-left"></div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 text-left">Tożsamość:</div>
+              <div class="col-md-6 text-left"></div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 text-left">Opis:</div>
+              <div class="col-md-6 text-left"></div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 text-left">Wynagrodzenie:</div>
+              <div class="col-md-6 text-left"></div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 text-left">Siła:</div>
+              <div class="col-md-6 text-left"></div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <img
+              className="img-responsive"
+              style={{ width: 200, margin: 2 }}
+              title={hero.name}
+              alt={hero.name}
+            />
+          </div>
+        </div>
+      </div>
