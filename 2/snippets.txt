@@ -87,9 +87,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 <div className="card">
-      <h5 className="card-header">Informacje o herosie</h5>
+      <h5 className="card-header">{ 'Informacje o herosie: ' + hero.name }</h5>
       <div className="card-body">
-        <p>Nazwa herosa: {hero.name}</p>
       </div>
       <div className="card-footer">
         <Link type="button" className="btn btn-outline-secondary" to="/heroes">
@@ -142,35 +141,34 @@ function getHeroesList() {
 14. Homework
 
 <div className="card-body">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="row">
-              <div class="col-md-3 text-left">Nazwa:</div>
-              <div class="col-md-6 text-left"></div>
+        <div className="row">
+          <div className="col-md-6">
+            <div className="row">
+              <div className="col-md-3 text-left">Nazwa:</div>
+              <div className="col-md-6 text-left"></div>
             </div>
-            <div class="row">
-              <div class="col-md-3 text-left">Team:</div>
-              <div class="col-md-6 text-left"></div>
+            <div className="row">
+              <div className="col-md-3 text-left">Team:</div>
+              <div className="col-md-6 text-left"></div>
             </div>
-            <div class="row">
-              <div class="col-md-3 text-left">Tożsamość:</div>
-              <div class="col-md-6 text-left"></div>
+            <div className="row">
+              <div className="col-md-3 text-left">Tożsamość:</div>
+              <div className="col-md-6 text-left"></div>
             </div>
-            <div class="row">
-              <div class="col-md-3 text-left">Opis:</div>
-              <div class="col-md-6 text-left"></div>
+            <div className="row">
+              <div className="col-md-3 text-left">Opis:</div>
+              <div className="col-md-6 text-left"></div>
             </div>
-            <div class="row">
-              <div class="col-md-3 text-left">Wynagrodzenie:</div>
-              <div class="col-md-6 text-left"></div>
+            <div className="row">
+              <div className="col-md-3 text-left">Wynagrodzenie:</div>
+              <div className="col-md-6 text-left"></div>
             </div>
-            <div class="row">
-              <div class="col-md-3 text-left">Siła:</div>
-              <div class="col-md-6 text-left"></div>
+            <div className="row">
+              <div className="col-md-3 text-left">Siła:</div>
+              <div className="col-md-6 text-left"></div>
             </div>
           </div>
-
-          <div class="col-md-6">
+          <div className="col-md-6">
             <img
               className="img-responsive"
               style={{ width: 200, margin: 2 }}
