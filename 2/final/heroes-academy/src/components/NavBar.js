@@ -9,13 +9,13 @@ function NavBar() {
       </NavLink>
       <div className="collapse navbar-collapse" id="navbarNavDropdown">
         <ul className="navbar-nav">
-          <li className="nav-item active">
-            <NavLink className="nav-link" to="/" exact activeClassName="active">
+          <li className="nav-item">
+            <NavLink className="nav-link" exact to="/" activeClassName="active">
               Witaj
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="heroes" activeClassName="active">
+            <NavLink className="nav-link" to="/heroes" activeClassName="active">
               Lista Herosów
             </NavLink>
           </li>

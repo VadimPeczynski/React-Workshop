@@ -8,6 +8,7 @@ const heroes = [
     description: "Man with iron suit",
     strength: 4.2,
     logoUrl: "/logos/iron-man.png",
+    active: true,
   },
   {
     id: 2,
@@ -18,6 +19,7 @@ const heroes = [
     description: "Norse god of thunder",
     strength: 4.5,
     logoUrl: "/logos/thor.png",
+    active: true,
   },
   {
     id: 3,
@@ -28,6 +30,7 @@ const heroes = [
     description: "Man of steel",
     strength: 5.0,
     logoUrl: "/logos/superman.png",
+    active: true,
   },
   {
     id: 4,
@@ -38,6 +41,7 @@ const heroes = [
     description: "Fun to hang out with ... in short doses",
     strength: 3.2,
     logoUrl: "/logos/deadpool.png",
+    active: true,
   },
   {
     id: 5,
@@ -48,6 +52,7 @@ const heroes = [
     description: "Amazon warrior",
     strength: 4.4,
     logoUrl: "/logos/wonder-woman.png",
+    active: true,
   },
 ];
 
@@ -61,6 +66,7 @@ const sidekicks = [
     description: "Man with iron suit",
     strength: 4,
     logoUrl: "/logos/war-machine.png",
+    active: true,
   },
   {
     id: 2,
@@ -71,6 +77,7 @@ const sidekicks = [
     description: "The protector of Bludhaven",
     strength: 3.5,
     logoUrl: "/logos/nightwing.png",
+    active: true,
   },
   {
     id: 3,
@@ -81,6 +88,7 @@ const sidekicks = [
     description: "Fastest man alive",
     strength: 5.0,
     logoUrl: "/logos/kid-flash.png",
+    active: true,
   },
   {
     id: 4,
@@ -91,6 +99,7 @@ const sidekicks = [
     description: "Armoured with wings",
     strength: 3.4,
     logoUrl: "/logos/falcon.png",
+    active: true,
   },
 ];
 
@@ -105,9 +114,12 @@ const newHero = {
   logoUrl: "",
 };
 
+const teams = ["Avengers", "Justice League", "Bat Family", "X-men"];
+
 // Using CommonJS style export so we can consume via Node (without using Babel-node)
 module.exports = {
   newHero,
   heroes,
+  teams,
   sidekicks,
 };
