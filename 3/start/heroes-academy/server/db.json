@@ -1,26 +1,6 @@
 {
   "heroes": [
     {
-      "id": 1,
-      "name": "Iron Man",
-      "team": "Avengers",
-      "secretIdentity": "Tony Stark",
-      "salary": 0.99,
-      "description": "Man with iron suit",
-      "strength": 4.2,
-      "logoUrl": "/logos/iron-man.png"
-    },
-    {
-      "id": 2,
-      "name": "Thor",
-      "team": "Avengers",
-      "secretIdentity": "Thor Odinson",
-      "salary": 10.99,
-      "description": "Norse god of thunder",
-      "strength": 4.5,
-      "logoUrl": "/logos/thor.png"
-    },
-    {
       "id": 3,
       "name": "Superman",
       "team": "Justice League",
@@ -28,7 +8,8 @@
       "salary": 3500,
       "description": "Man of steel",
       "strength": 5,
-      "logoUrl": "/logos/superman.png"
+      "logoUrl": "/logos/superman.png",
+      "active": true
     },
     {
       "id": 4,
@@ -38,7 +19,8 @@
       "salary": 15000,
       "description": "Fun to hang out with ... in short doses",
       "strength": 3.2,
-      "logoUrl": "/logos/deadpool.png"
+      "logoUrl": "/logos/deadpool.png",
+      "active": true
     },
     {
       "id": 5,
@@ -48,7 +30,8 @@
       "salary": 10000,
       "description": "Amazon warrior",
       "strength": 4.4,
-      "logoUrl": "/logos/wonder-woman.png"
+      "logoUrl": "/logos/wonder-woman.png",
+      "active": true
     }
   ],
   "sidekicks": [
@@ -60,7 +43,8 @@
       "salary": 1520.2,
       "description": "Man with iron suit",
       "strength": 4,
-      "logoUrl": "/logos/war-machine.png"
+      "logoUrl": "/logos/war-machine.png",
+      "active": true
     },
     {
       "id": 2,
@@ -70,7 +54,8 @@
       "salary": 10.99,
       "description": "The protector of Bludhaven",
       "strength": 3.5,
-      "logoUrl": "/logos/nightwing.png"
+      "logoUrl": "/logos/nightwing.png",
+      "active": true
     },
     {
       "id": 3,
@@ -80,7 +65,8 @@
       "salary": 2499.99,
       "description": "Fastest man alive",
       "strength": 5,
-      "logoUrl": "/logos/kid-flash.png"
+      "logoUrl": "/logos/kid-flash.png",
+      "active": true
     },
     {
       "id": 4,
@@ -90,7 +76,8 @@
       "salary": 1000,
       "description": "Armoured with wings",
       "strength": 3.4,
-      "logoUrl": "/logos/falcon.png"
+      "logoUrl": "/logos/falcon.png",
+      "active": true
     }
   ],
   "teams": [

@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import Welcome from "./Welcome";
 import PageNotFound from "./PageNotFound";
 import HeroDetails from "./HeroDetails";
+import HeroEdit from "./HeroEdit";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" exact component={Welcome}></Route>
         <Route path="/heroes" component={HeroesList}></Route>
         <Route path="/hero-details/:id" component={HeroDetails}></Route>
+        <Route path="/hero-edit" component={HeroEdit}></Route>
         <Route component={PageNotFound}></Route>
       </Switch>
     </div>
