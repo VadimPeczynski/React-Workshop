@@ -1,0 +1,453 @@
+1. Tworzenie formularza
+
+    <div className="card">
+      <div className="card-header">Dodawanie herosa</div>
+      <div className="card-body container">
+        <form>
+          <div className="mb-3">
+            <label htmlFor="name">Nazwa</label>
+            <input
+              type="text"
+              className="form-control"
+              id="name"
+              name="name"
+              value={props.hero.name}
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="team">Team</label>
+            <input
+              type="text"
+              className="form-control"
+              id="team"
+              name="team"
+              value={props.hero.team}
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="secretIdentity">Tożsamość</label>
+            <input
+              type="text"
+              className="form-control"
+              id="secretIdentity"
+              name="secretIdentity"
+              value={props.hero.secretIdentity}
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="salary">Wynagrodzenie</label>
+            <input
+              type="number"
+              className="form-control"
+              id="salary"
+              name="salary"
+              value={props.hero.salary}
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="strength">Siła</label>
+            <input
+              type="number"
+              className="form-control"
+              id="strength"
+              name="strength"
+              value={props.hero.strength}
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="description">Opis</label>
+            <textarea
+              className="form-control"
+              id="description"
+              rows="3"
+              name="description"
+              value={props.hero.description}
+            ></textarea>
+          </div>
+          <div className="mb-3 form-check">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              id="active"
+              name="active"
+              checked={props.hero.active}
+            />
+            <label className="form-check-label" htmlFor="active">
+              Aktywny
+            </label>
+          </div>
+          <button type="submit" className="btn btn-primary me-2">
+            Zapisz
+          </button>
+          <button type="button" className="btn btn-secondary">
+            Anuluj
+          </button>
+        </form>
+      </div>
+    </div>
+
+2. onNameChange handler
+
+function handleNameChange(event) {
+    const updatedHero = { ...hero, name: event.target.value };
+    setHero(updatedHero);
+  }
+
+3. onChange
+function handleChange({ target }) {
+    setHero({ ...hero, [target.name]: target.value });
+  }
+
+4. Komponenty reużywalne
+
+import React from "react";
+
+export default function Input(props) {
+  return (
+    <div className="mb-3">
+      <label htmlFor={props.id}>{props.label}</label>
+      <input
+        type="text"
+        className="form-control"
+        id={props.id}
+        name={props.name}
+        value={props.value}
+        onChange={props.onChange}
+      />
+    </div>
+  );
+}
+
+5. PropTypes
+
+Input.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  error: PropTypes.string,
+};
+
+Input.defaultProps = {
+    error: "",
+  };
+
+6. Walidacja
+
+<span className="invalid-feedback">{props.error}</span>
+
+let inputClass = "form-control";
+  if (props.touched && props.error.length > 0) {
+    inputClass += " is-invalid";
+  }
+
+7. Błędy walidacji
+
+const [errors, setErrors] = useState({});
+
+function hasValidationErrors() {
+    const _errors = {};
+    if (!hero.name) _errors.name = "Nazwa bohatera jest wymagana";
+    if (!hero.team) _errors.team = "Team bohatera jest wymagany";
+    if (hero.salary < 0)
+      _errors.salary = "Wynagrodzenie bohatera nie może być mniejsze niż 0";
+    if (hero.strength < 0 || hero.strength > 5)
+      _errors.strength =
+        "Siła bohatera nie może być mniejsza niż 0 i większa niż 5";
+
+    setErrors(_errors);
+    return Object.keys(_errors).length > 0;
+  }
+
+8. onBlur
+
+(in Input.js and EditForm.js)
+onBlur={props.onBlur}
+
+function handleBlur() {
+    hasValidationErrors();
+  }
+
+9. Touched
+
+const [touched, setTouched] = useState({});
+
+setTouched({ ...touched, [target.name]: true });
+
+touched={touched}
+
+touched={props.touched.name}
+
+props.touched && 
+
+10. Select
+    let selectClass = "form-control";
+    if (props.touched && props.error) {
+        selectClass += " is-invalid";
+    }
+
+    <div className="mb-3">
+      <label htmlFor={props.id} className="form-label">
+        {props.label}
+      </label>
+      <select
+        className={selectClass}
+        id={props.id}
+        name={props.name}
+        value={props.value}
+        onChange={props.onChange}
+        onBlur={props.onBlur}
+      >
+      </select>
+      <span className="invalid-feedback">{props.error}</span>
+    </div>
+
+Select.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  label: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string,
+  error: PropTypes.string,
+};
+
+Select.defaultProps = {
+  error: "",
+};
+
+10a. Opcja domyślna
+
+<option value="" disabled hidden>
+          Wybierz
+        </option>
+10b. Opcje
+
+{props.options.map((option) => {
+          return (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          );
+        })}
+
+10c. Teamy
+
+import { getTeams } from "../api/teamsApi";
+
+const [teams, setTeams] = useState([]);
+
+useEffect(() => {
+    getTeams().then((_teams) => {
+      setTeams(_teams);
+    });
+  }, []);
+
+10d. Select
+
+   <Select
+    label="Team"
+    id="team"
+    name="team"
+    value={props.hero.team}
+    onChange={props.onChange}
+    onBlur={props.onBlur}
+    error={props.errors.team}
+    touched={props.touched.team}
+    options={props.options}
+   />
+
+11. Checkbox
+
+    <div className="mb-3 form-check">
+      <input
+        type="checkbox"
+        className="form-check-input"
+        id={props.id}
+        name={props.name}
+        checked={props.value}
+        onChange={props.onChange}
+      />
+      <label className="form-check-label" htmlFor={props.id}>
+        {props.label}
+      </label>
+    </div>
+
+Checkbox.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.bool,
+};
+
+          <Checkbox
+            label="Aktywny"
+            id="active"
+            name="active"
+            value={props.hero.active}
+            onChange={props.onChange}
+          />
+
+12. Submit
+
+function handleSubmit(event) {
+    event.preventDefault();
+    saveHero(hero).then(() => {
+      props.history.push("/heroes");
+    });
+  }
+
+13. Toast
+
+npm install react-toastify@8.0.3
+
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+<ToastContainer autoClose={3000} />
+
+14. Wywołanie toasta
+
+import { toast } from "react-toastify";
+
+toast.success("Bohater zapisany!");
+
+15. Edit hero
+
+const id = props.match.params.id;
+
+useEffect(() => {
+    getHeroById(id).then((_hero) => {
+      setHero(_hero);
+    });
+  }, [id]);
+
+16. Link do edycji
+
+<Link
+          type="button"
+          className="btn btn-outline-success mx-3"
+          to={"/hero-edit/" + hero.id}
+        >
+          Edycja herosa
+        </Link>
+
+{props.hero.id ? "Edycja" : "Dodawanie"}
+
+17. Anulowanie formularza
+
+function handleCancel() {
+    props.history.push("/heroes");
+  }
+
+
+Tłumaczenia
+
+1. Instalacja
+
+npm install i18next react-i18next i18next-browser-languagedetector
+
+2. Inicjalizacja
+
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+import LanguageDetector from "i18next-browser-languagedetector";
+
+i18n
+  // detect user language
+  // learn more: https://github.com/i18next/i18next-browser-languageDetector
+  .use(LanguageDetector)
+  // pass the i18n instance to react-i18next.
+  .use(initReactI18next)
+  // init i18next
+  // for all options read: https://www.i18next.com/overview/configuration-options
+  .init({
+    debug: true,
+    fallbackLng: "en",
+    interpolation: {
+      escapeValue: false, // not needed for react as it escapes by default
+    },
+    resources: {
+      en: {
+        translation: {
+          createdBy: "Created by:",
+          name_surname: "Name and Surname",
+        },
+      },
+    },
+  });
+
+export default i18n;
+
+3. Dodanie do aplikacji
+
+import "./i18n";
+
+4. Pierwsze tłumaczenia
+
+createdBy: "Created by:",
+name_surname: "Name and Surname",
+heroes_list: "Heroes List",
+welcome: "Welcome",
+
+5. Dodanie tłumaczeń do widoku
+
+import { useTranslation, Trans } from "react-i18next";
+
+<Trans i18nKey="createdBy"></Trans>
+{t("name_surname")}
+
+6. Zmiana języków
+
+import { useTranslation } from "react-i18next";
+
+const { t, i18n } = useTranslation();
+
+const lngs = ["en", "pl"];
+
+  function handleLanguageChange({ target }) {
+    i18n.changeLanguage(target.value);
+  }
+
+<li className="nav-item">
+            <select
+              className="form-select"
+              id="language"
+              name="language"
+              value={i18n.language}
+              onChange={handleLanguageChange}
+            >
+              {lngs.map((option) => {
+                return (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                );
+              })}
+            </select>
+          </li>
+
+7. Ładowanie tłumaczeń z pliku
+
+npm install i18next-http-backend
+
+import Backend from "i18next-http-backend";
+
+.use(Backend)
+
+8. Utworzenie plików (public->locales->en->translation.json)
+
+{
+    "createdBy": "Created by:",
+    "name_surname": "Name and Surname",
+    "heroes_list": "Heroes List",
+    "welcome": "Welcome"
+}
+
+9. Suspense
+
+import React, { Suspense } from "react";
+
+<Suspense fallback="...is loading">
