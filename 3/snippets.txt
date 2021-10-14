@@ -372,8 +372,6 @@ i18n
     resources: {
       en: {
         translation: {
-          createdBy: "Created by:",
-          name_surname: "Name and Surname",
         },
       },
     },
@@ -395,6 +393,8 @@ welcome: "Welcome",
 5. Dodanie tłumaczeń do widoku
 
 import { useTranslation, Trans } from "react-i18next";
+
+const { t } = useTranslation();
 
 <Trans i18nKey="createdBy"></Trans>
 {t("name_surname")}
