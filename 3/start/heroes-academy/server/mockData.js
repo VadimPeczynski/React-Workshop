@@ -112,6 +112,7 @@ const newHero = {
   description: "",
   strength: 0,
   logoUrl: "",
+  active: false,
 };
 
 const teams = ["Avengers", "Justice League", "Bat Family", "X-men"];
