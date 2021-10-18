@@ -87,7 +87,7 @@ const HeroForm = (props) => {
               className="btn btn-primary me-2"
               disabled={!props.isSubmitEnabled}
             >
-              Dodaj
+              Zapisz
             </button>
             <button
               type="button"

@@ -72,6 +72,10 @@ const HeroEdit = (props) => {
     setIsSubmitEnabled(!hasValidationErrors());
   }
 
+  function handleCancel() {
+    props.history.push("/heroes");
+  }
+
   function hasValidationErrors() {
     const _errors = {};
     if (!hero.name) _errors.name = "Nazwa bohatera jest wymagana";
@@ -95,6 +99,7 @@ const HeroEdit = (props) => {
       onSubmit={handleSubmit}
       onBlur={handleBlur}
       onChange={handleChange}
+      onCancel={handleCancel}
       isSubmitEnabled={isSubmitEnabled}
     />
   );
