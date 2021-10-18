@@ -1,0 +1,108 @@
+Tłumaczenia
+
+1. Instalacja
+
+npm install i18next react-i18next i18next-browser-languagedetector
+
+2. Inicjalizacja
+
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+import LanguageDetector from "i18next-browser-languagedetector";
+
+i18n
+  // detect user language
+  // learn more: https://github.com/i18next/i18next-browser-languageDetector
+  .use(LanguageDetector)
+  // pass the i18n instance to react-i18next.
+  .use(initReactI18next)
+  // init i18next
+  // for all options read: https://www.i18next.com/overview/configuration-options
+  .init({
+    debug: true,
+    fallbackLng: "en",
+    interpolation: {
+      escapeValue: false, // not needed for react as it escapes by default
+    },
+    resources: {
+      en: {
+        translation: {
+        },
+      },
+    },
+  });
+
+export default i18n;
+
+3. Dodanie do aplikacji
+
+import "./i18n";
+
+4. Pierwsze tłumaczenia
+
+createdBy: "Created by:",
+name_surname: "Name and Surname",
+heroes_list: "Heroes List",
+welcome: "Welcome",
+
+5. Dodanie tłumaczeń do widoku
+
+import { useTranslation, Trans } from "react-i18next";
+
+const { t } = useTranslation();
+
+<Trans i18nKey="createdBy"></Trans>
+{t("name_surname")}
+
+6. Zmiana języków
+
+import { useTranslation } from "react-i18next";
+
+const { t, i18n } = useTranslation();
+
+const lngs = ["en", "pl"];
+
+  function handleLanguageChange({ target }) {
+    i18n.changeLanguage(target.value);
+  }
+
+<li className="nav-item">
+            <select
+              className="form-select"
+              id="language"
+              name="language"
+              value={i18n.language}
+              onChange={handleLanguageChange}
+            >
+              {lngs.map((option) => {
+                return (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                );
+              })}
+            </select>
+          </li>
+
+7. Ładowanie tłumaczeń z pliku
+
+npm install i18next-http-backend
+
+import Backend from "i18next-http-backend";
+
+.use(Backend)
+
+8. Utworzenie plików (public->locales->en->translation.json)
+
+{
+    "createdBy": "Created by:",
+    "name_surname": "Name and Surname",
+    "heroes_list": "Heroes List",
+    "welcome": "Welcome"
+}
+
+9. Suspense
+
+import React, { Suspense } from "react";
+
+<Suspense fallback="...is loading">
