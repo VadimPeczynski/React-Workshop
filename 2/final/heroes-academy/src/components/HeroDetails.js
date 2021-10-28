@@ -8,6 +8,7 @@ function HeroDetails(props) {
 
   useEffect(() => {
     getHeroById(id).then((_hero) => {
+      debugger;
       setHero(_hero);
     });
   }, [id]);

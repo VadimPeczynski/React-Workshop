@@ -1,0 +1,146 @@
+1. Instalacja
+
+npm install @reduxjs/toolkit react-redux
+
+2. Utworzenie store'a
+
+export default function configureAppStore(initialState) {
+  return configureStore({
+    reducer: {},
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
+    devTools: process.env.NODE_ENV !== "production",
+    preloadedState: initialState,
+  });
+}
+
+3. Provider
+import { Provider } from "react-redux";
+
+<Provider store={store}>
+    <Router>
+      <App />
+    </Router>
+  </Provider>
+
+4. Utworzenie reducera
+
+export default function heroReducer(
+  state = {},
+  action
+) {
+  switch (action.type) {
+    default:
+      return state;
+  }
+}
+
+5. Utworzenie selectora
+
+const heroes = useSelector(({ heroes }) => heroes.data);
+
+6. Utworzenie akcji
+
+export function toggleShowImage() {
+  return { type: "TOGGLE_SHOW_IMAGE" };
+}
+
+7. Dodanie metody do reducera
+
+case types.TOGGLE_SHOW_IMAGE:
+      return {
+        ...state,
+        showImage: !state.showImage,
+      };
+
+8. Dodanie dispatch akcji
+
+function onLogoButtonClick() {
+    dispatch(toggleShowImage());
+  }
+
+9. Dodanie selectora
+
+const showImage = useSelector(({ heroes }) => heroes.showImage);
+
+10. Thunk
+
+export function loadHeroes() {
+  return function (dispatch) {
+    return getHeroes()
+      .then((heroes) => {
+        dispatch(loadHeroesSuccess(heroes));
+      })
+      .catch((error) => {
+        throw error;
+      });
+  };
+}
+
+11. Akcja success
+
+export function loadHeroesSuccess(heroes) {
+  return { type: types.LOAD_HEROES_SUCCESS, heroes };
+}
+
+12. Reducer
+
+case types.LOAD_HEROES_SUCCESS:
+      return {
+        ...state,
+        data: action.heroes,
+      };
+
+13. Stan początkowy
+
+const initialState = {
+  heroes: [],
+};
+
+export default initialState;
+
+14. Detale bohaterów
+
+const hero = useSelector((state) => {
+    return state.heroes.data[id];
+  });
+
+15. Tworzenie/aktualizacja bohaterów
+
+export function saveHero(hero) {
+  return function (dispatch) {
+    return heroApi
+      .saveHero(hero)
+      .then((savedHero) => {
+        hero.id
+          ? dispatch(updateHeroSuccess(savedHero))
+          : dispatch(createHeroSuccess(savedHero));
+      })
+      .catch((error) => {
+        throw error;
+      });
+  };
+}
+
+16. Reducer
+
+case types.CREATE_HERO_SUCCESS:
+      return {
+        ...state,
+        data: [...state.data, action.hero],
+      };
+    case types.UPDATE_HERO_SUCCESS:
+      return {
+        ...state,
+        data: state.data.map((hero) =>
+          action.hero.id === hero.id ? action.hero : hero
+        ),
+      };
+
+17. Dispatch
+
+import { saveHero } from "../redux/actions/heroActions";
+import { useDispatch } from "react-redux";
+
+const dispatch = useDispatch();
+
+dispatch(saveHero(hero))
