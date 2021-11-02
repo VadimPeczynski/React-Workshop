@@ -36,7 +36,7 @@ export default function heroReducer(
 
 5. Utworzenie selectora
 
-const heroes = useSelector(({ heroes }) => heroes.data);
+const heroes = useSelector((state) => state.heroes);
 
 6. Utworzenie akcji
 
