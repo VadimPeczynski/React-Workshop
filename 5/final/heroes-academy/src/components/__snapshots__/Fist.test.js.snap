@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should create 5 start if strength is 5 1`] = `
+<div
+  className="crop"
+  style={
+    Object {
+      "width": 60,
+    }
+  }
+  title={5}
+>
+  <div
+    className="fists"
+  >
+    <span
+      className="fas fa-fist-raised"
+    />
+    <span
+      className="fas fa-fist-raised"
+    />
+    <span
+      className="fas fa-fist-raised"
+    />
+    <span
+      className="fas fa-fist-raised"
+    />
+    <span
+      className="fas fa-fist-raised"
+    />
+  </div>
+</div>
+`;

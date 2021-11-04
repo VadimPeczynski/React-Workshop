@@ -1,0 +1,4 @@
+{
+  "vscode-edge-devtools.headless": true,
+  "appService.zipIgnorePattern": ["node_modules{,/**}", ".vscode{,/**}"]
+}
