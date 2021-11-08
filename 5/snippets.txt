@@ -148,6 +148,10 @@ firebase init
 
 firebase emulators:start
 
+5. Deployment
+
+firebase deploy
+
 Deployment Visual Studio
 
 1. Klasa Hero
